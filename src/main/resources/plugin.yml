@@ -1,0 +1,551 @@
+name: ModerationSMP
+version: '${project.version}'
+main: fr.moderation.ModerationSMP
+api-version: '1.21'
+author: YourName
+description: Plugin de modération complet avec système de mort et puzzles
+softdepend: [CoreProtect, WorldEdit]
+
+commands:
+  vanish:
+    description: Active ou désactive le mode vanish basique
+    usage: /<command>
+    permission: moderation.vanish
+    
+  supervanish:
+    description: Active ou désactive le mode supervanish (vanish avancé)
+    usage: /<command>
+    permission: moderation.supervanish
+    
+  spawn:
+    description: Téléporte au spawn du serveur
+    usage: /<command>
+    permission: moderation.spawn
+    
+  setspawn:
+    description: Définit la position du spawn
+    usage: /<command>
+    permission: moderation.setspawn
+    
+  tpa:
+    description: Envoie une demande de téléportation à un joueur
+    usage: /<command> <joueur>
+    permission: moderation.tpa
+    
+  tpaccept:
+    description: Accepte une demande de téléportation
+    usage: /<command>
+    permission: moderation.tpa
+    
+  tpdeny:
+    description: Refuse une demande de téléportation
+    usage: /<command>
+    permission: moderation.tpa
+    
+  tphere:
+    description: Téléporte un joueur vers vous
+    usage: /<command> <joueur>
+    permission: moderation.tphere
+    
+  sethome:
+    description: Définit un home à votre position actuelle
+    usage: /<command> [nom]
+    permission: moderation.sethome
+    
+  home:
+    description: Téléporte vers un de vos homes
+    usage: /<command> [nom]
+    permission: moderation.home
+    
+  delhome:
+    description: Supprime un de vos homes
+    usage: /<command> <nom>
+    permission: moderation.delhome
+    
+  homes:
+    description: Liste tous vos homes
+    usage: /<command>
+    permission: moderation.homes
+    
+  invsee:
+    description: Ouvre l'inventaire d'un autre joueur
+    usage: /<command> <joueur>
+    permission: moderation.invsee
+    
+  broadcast:
+    description: Diffuse un message à tous les joueurs
+    usage: /<command> <message>
+    permission: moderation.broadcast
+    aliases: [bc]
+    
+  xray:
+    description: Gère le système anti-xray
+    usage: /<command> alerts
+    permission: moderation.xray.alerts
+    
+  topluck:
+    description: Affiche les statistiques de minage (Top Luck)
+    usage: /<command>
+    permission: moderation.topluck
+    
+  spec:
+    description: Bascule en mode spectateur (Xray Admin)
+    usage: /<command>
+    permission: moderation.spec
+    
+  register:
+    description: S'enregistrer sur le serveur
+    usage: /<command> <mdp> <mdp>
+    permission: moderation.auth
+    aliases: [reg]
+    
+  login:
+    description: Se connecter au serveur
+    usage: /<command> <mdp>
+    permission: moderation.auth
+    aliases: [l]
+    
+  skin:
+    description: Changer de skin
+    usage: /<command> <pseudo>
+    permission: moderation.skin
+    
+  jail:
+    description: Emprisonne un joueur dans une prison
+    usage: /<command> <joueur> <prison> <temps> [raison]
+    permission: moderation.jail
+    
+  unjail:
+    description: Libère un joueur de prison
+    usage: /<command> <joueur>
+    permission: moderation.jail
+    
+  setjail:
+    description: Définit l'emplacement d'une prison
+    usage: /<command> <nom>
+    permission: moderation.setjail
+    
+  co:
+    description: Commandes de rollback/restore
+    usage: /<command> <rollback|restore> t:<temps> r:<rayon> [u:<utilisateur>]
+    permission: moderation.coreprotect
+    aliases: [coreprotect]
+    
+  deathdim:
+    description: Gère le monde de la mort
+    usage: /<command> <tp|setspawn|reset|info|reload>
+    permission: moderation.deathdim
+    aliases: [dd, deathworld]
+    
+  gethead:
+    description: Obtient la tête d'un joueur pour le rituel
+    usage: /<command> <joueur>
+    permission: moderation.gethead
+    
+  team:
+    description: Gestion des équipes
+    usage: /<command> <setleader|invite|accept|deny|add|kick|transfer|leave|list|chat|info|sethome|delhome|home|resign>
+    permission: moderation.team
+    
+  guister:
+    description: Gérer le rôle Guister
+    usage: /<command> <add|remove|list> [joueur]
+    permission: moderation.guister
+    
+  pvp:
+    description: Active/Désactive le PVP sur le serveur
+    usage: /<command> [on|off]
+    permission: moderation.pvp
+    
+  structure:
+    description: Gestion des structures WorldEdit
+    usage: /<command> <save|load|list|setpuzzle> [args]
+    permission: moderation.structure
+    
+  noclip:
+    description: Active/Désactive le mode noclip (traverser les blocs)
+    usage: /<command>
+    permission: moderation.noclip
+    
+  heal:
+    description: Soigne un joueur (vie et nourriture)
+    usage: /<command> [joueur]
+    permission: moderation.heal
+    
+  feed:
+    description: Restaure la nourriture d'un joueur
+    usage: /<command> [joueur]
+    permission: moderation.feed
+    
+  fly:
+    description: Active/Désactive le vol pour un joueur
+    usage: /<command> [joueur]
+    permission: moderation.fly
+    
+  speed:
+    description: Modifie la vitesse de déplacement
+    usage: /<command> <1-10>
+    permission: moderation.speed
+    
+  god:
+    description: Active/Désactive le mode invincibilité
+    usage: /<command> [joueur]
+    permission: moderation.god
+    
+  clear:
+    description: Vide l'inventaire d'un joueur
+    usage: /<command> [joueur]
+    permission: moderation.clear
+    
+  gamemode:
+    description: Change le mode de jeu
+    usage: /<command> <mode> [joueur]
+    permission: moderation.gamemode
+    aliases: [gm]
+    
+  back:
+    description: Retourne à la position précédente
+    usage: /<command>
+    permission: moderation.back
+    
+  tpall:
+    description: Téléporte tous les joueurs vers vous
+    usage: /<command>
+    permission: moderation.tpall
+    
+  tppos:
+    description: Téléportation à des coordonnées
+    usage: /<command> <x> <y> <z> [world]
+    permission: moderation.tppos
+    
+  freeze:
+    description: Gèle un joueur (empêche tout mouvement)
+    usage: /<command> <joueur>
+    permission: moderation.freeze
+    
+  rtp:
+    description: Téléportation aléatoire dans le monde
+    usage: /<command>
+    permission: moderation.rtp
+    aliases: [wild, randomtp]
+    
+  scoreboard:
+    description: Affiche/cache le scoreboard
+    usage: /<command> [toggle]
+    permission: moderation.scoreboard
+    aliases: [sb]
+    
+  balance:
+    description: Affiche votre solde
+    usage: /<command>
+    permission: moderation.balance
+    aliases: [bal, money]
+    
+  pay:
+    description: Envoyer de l'argent à un joueur
+    usage: /<command> <joueur> <montant>
+    permission: moderation.pay
+    
+  eco:
+    description: Gérer l'économie (admin)
+    usage: /<command> <give|take|set|reset> <joueur> [montant]
+    permission: moderation.eco
+    aliases: [economy]
+    
+  ah:
+    description: Auction House - Acheter et vendre des items
+    usage: /<command> [sell <prix>|listings|expired]
+    permission: moderation.ah
+    aliases: [auctions, auctionhouse]
+    
+  shop:
+    description: Shop du serveur - Acheter des items
+    usage: /<command>
+    permission: moderation.shop
+    aliases: [boutique, magasin]
+    
+  jobs:
+    description: Système de jobs et métiers
+    usage: /<command> [stats|info <job>]
+    permission: moderation.jobs
+    aliases: [job, métier, metier]
+    
+  fantome:
+    description: Passer en mode fantôme (spectateur) dans le monde réel
+    usage: /<command>
+    permission: moderation.fantome
+    aliases: [ghost]
+    
+permissions:
+  moderation.*:
+    description: Accès à toutes les fonctionnalités de modération
+    children:
+      moderation.vanish: true
+      moderation.supervanish: true
+      moderation.spawn: true
+      moderation.setspawn: true
+      moderation.tpa: true
+      moderation.tphere: true
+      moderation.sethome: true
+      moderation.home: true
+      moderation.delhome: true
+      moderation.homes: true
+      moderation.invsee: true
+      moderation.broadcast: true
+      moderation.xray.alerts: true
+      moderation.topluck: true
+      moderation.spec: true
+      moderation.auth: true
+      moderation.skin: true
+      moderation.jail: true
+      moderation.setjail: true
+      moderation.coreprotect: true
+      moderation.deathdim: true
+      moderation.deathdim.bypass: true
+      moderation.gethead: true
+      moderation.guister: true
+      moderation.heal: true
+      moderation.feed: true
+      moderation.fly: true
+      moderation.speed: true
+      moderation.god: true
+      moderation.clear: true
+      moderation.gamemode: true
+      moderation.back: true
+      moderation.tpall: true
+      moderation.tppos: true
+      moderation.freeze: true
+      moderation.rtp: true
+      moderation.rtp.nocooldown: true
+      moderation.scoreboard: true
+      moderation.balance: true
+      moderation.pay: true
+      moderation.eco: true
+      moderation.ah: true
+      moderation.shop: true
+      moderation.jobs: true
+      moderation.fantome: true
+      
+  moderation.xray.alerts:
+    description: Reçoit les alertes de minage suspect
+    default: op
+    
+  moderation.topluck:
+    description: Accès à la commande topluck
+    default: op
+    
+  moderation.spec:
+    description: Accès à la commande spec
+    default: op
+    
+  moderation.auth:
+    description: Accès aux commandes d'authentification
+    default: true
+    
+  moderation.skin:
+    description: Accès à la commande skin
+    
+  moderation.home:
+    description: Permet de se téléporter à ses homes
+    default: true
+    
+  moderation.delhome:
+    description: Permet de supprimer ses homes
+    default: true
+    
+  moderation.homes:
+    description: Permet de lister ses homes
+    default: true
+    
+  moderation.invsee:
+    description: Permet de voir l'inventaire d'autres joueurs
+    default: op
+    
+  moderation.broadcast:
+    description: Permet de diffuser des messages
+    default: op
+    
+  moderation.jail:
+    description: Permet d'emprisonner et libérer des joueurs
+    default: op
+    
+  moderation.setjail:
+    description: Permet de définir des prisons
+    default: op
+    
+  moderation.coreprotect:
+    description: Accès aux commandes de rollback/restore
+    default: op
+    
+  moderation.deathdim:
+    description: Accès aux commandes du monde de la mort
+    default: op
+    
+  moderation.deathdim.bypass:
+    description: Bypass du système de monde de la mort (ne meurt pas dans le monde de la mort)
+    default: op
+    
+  moderation.deathdim.tp:
+    description: Permet de téléporter des joueurs dans le monde de la mort
+    default: op
+    
+  moderation.deathdim.setspawn:
+    description: Permet de définir le spawn du monde de la mort
+    default: op
+    
+  moderation.deathdim.reset:
+    description: Permet de réinitialiser les énigmes des joueurs 
+    default: op
+    
+  moderation.deathdim.info:
+    description: Permet de voir les infos du monde de la mort
+    default: op
+    
+  moderation.deathdim.reload:
+    description: Permet de recharger la config du monde de la mort
+    default: op
+    
+
+  moderation.gethead:
+    description: Permet d'obtenir la tête d'un joueur
+    default: op
+    
+  moderation.guister:
+    description: Permet de gérer le rôle Guister
+    default: op
+    
+  moderation.team:
+    description: Permet d'utiliser les commandes d'équipe
+    default: true
+    
+  moderation.pvp:
+    description: Permet de gérer le PVP
+
+  skin:
+    description: Changer de skin
+    usage: /<command> <pseudo>
+    permission: moderation.skin
+    
+  jail:
+    description: Emprisonne un joueur dans une prison
+    usage: /<command> <joueur> <prison> <temps> [raison]
+    permission: moderation.jail
+    
+  unjail:
+    description: Libère un joueur de prison
+    usage: /<command> <joueur>
+    permission: moderation.jail
+    
+  setjail:
+    description: Définit l'emplacement d'une prison
+    usage: /<command> <nom>
+    permission: moderation.setjail
+    
+  co:
+    description: Commandes de rollback/restore
+    usage: /<command> <rollback|restore> t:<temps> r:<rayon> [u:<utilisateur>]
+    permission: moderation.coreprotect
+    aliases: [coreprotect]
+    
+  deathdim:
+    default: op
+    
+  moderation.team:
+    description: Permet d'utiliser les commandes d'équipe
+    default: true
+    
+  moderation.pvp:
+    description: Permet de gérer le PVP
+    default: op
+    
+  moderation.structure:
+    description: Permet de gérer les structures WorldEdit
+    default: op
+    
+  moderation.noclip:
+    description: Permet d'utiliser le mode noclip
+    default: op
+    
+  moderation.heal:
+    description: Permet de soigner des joueurs
+    default: op
+    
+  moderation.feed:
+    description: Permet de nourrir des joueurs
+    default: op
+    
+  moderation.fly:
+    description: Permet d'activer le vol
+    default: op
+    
+  moderation.speed:
+    description: Permet de modifier la vitesse
+    default: op
+    
+  moderation.god:
+    description: Permet d'activer le mode invincibilité
+    default: op
+    
+  moderation.clear:
+    description: Permet de vider les inventaires
+    default: op
+    
+  moderation.gamemode:
+    description: Permet de changer le mode de jeu
+    default: op
+    
+  moderation.back:
+    description: Permet de retourner à la position précédente
+    default: op
+    
+  moderation.tpall:
+    description: Permet de téléporter tous les joueurs
+    default: op
+    
+  moderation.tppos:
+    description: Permet de se téléporter à des coordonnées
+    default: op
+    
+  moderation.freeze:
+    description: Permet de geler des joueurs
+    default: op
+    
+  moderation.rtp:
+    description: Permet d'utiliser la téléportation aléatoire
+    default: true
+    
+  moderation.rtp.nocooldown:
+    description: Bypass le cooldown du /rtp
+    default: op
+    
+  moderation.scoreboard:
+    description: Permet d'afficher/cacher le scoreboard
+    default: true
+    
+  moderation.balance:
+    description: Permet de voir son solde
+    default: true
+    
+  moderation.pay:
+    description: Permet d'envoyer de l'argent
+    default: true
+    
+  moderation.eco:
+    description: Permet de gérer l'économie
+    default: op
+    
+  moderation.ah:
+    description: Permet d'utiliser l'Auction House
+    default: true
+    
+  moderation.shop:
+    description: Permet d'utiliser le shop du serveur
+    default: true
+    
+  moderation.jobs:
+    description: Permet d'utiliser le système de jobs
+    default: true
+    
+  moderation.fantome:
+    description: Permet de devenir fantôme depuis le Death Dimension
+    default: true

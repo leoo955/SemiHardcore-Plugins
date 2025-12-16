@@ -1,0 +1,167 @@
+# Configuration du plugin ModerationSMP
+
+# Messages
+messages:
+  prefix: "&8[&fFake Unstable SMP&8]&r "
+  no_permission: "&cVous n'avez pas la permission d'exécuter cette commande."
+  player_only: "&cCette commande ne peut être exécutée que par un joueur."
+  player_not_found: "&cJoueur introuvable."
+  
+  # Vanish
+  vanish_enabled: "&aVous êtes maintenant invisible."
+  vanish_disabled: "&cVous êtes maintenant visible."
+  supervanish_enabled: "&aMode SuperVanish activé."
+  supervanish_disabled: "&cMode SuperVanish désactivé."
+  
+  # Spawn
+  spawn_teleport: "&aTéléportation au spawn..."
+  spawn_set: "&aSpawn défini à votre position actuelle."
+  spawn_not_set: "&cLe spawn n'a pas encore été défini."
+  
+  # TPA
+  tpa_sent: "&aDemande de téléportation envoyée à &e{player}&a."
+  tpa_received: "&e{player} &ademande à se téléporter vers vous. &7/tpaccept &aou &7/tpdeny"
+  tpa_accepted: "&aVous avez accepté la demande de téléportation."
+  tpa_denied: "&cVous avez refusé la demande de téléportation."
+  tpa_accepted_sender: "&e{player} &aa accepté votre demande."
+  tpa_denied_sender: "&e{player} &ca refusé votre demande."
+  tpa_no_request: "&cVous n'avez aucune demande de téléportation en attente."
+  tpa_expired: "&cLa demande de téléportation a expiré."
+  tpa_teleporting: "&aTéléportation en cours..."
+  
+  # TPHere
+  tphere_success: "&aVous avez téléporté &e{player} &avers vous."
+  tphere_target: "&aVous avez été téléporté vers &e{player}&a."
+  
+  # Homes
+  home_set: "&aHome '&e{home}&a' défini à votre position actuelle."
+  home_updated: "&aHome '&e{home}&a' mis à jour."
+  home_teleport: "&aTéléportation au home '&e{home}&a'..."
+  home_deleted: "&aHome '&e{home}&a' supprimé."
+  home_not_found: "&cVous n'avez pas de home nommé '&e{home}&c'."
+  home_limit_reached: "&cVous avez atteint la limite de homes ({limit})."
+  homes_list: "&aVos homes (&e{count}&a/{limit}):"
+  homes_entry: "&7- &e{home} &7: &f{x}, {y}, {z} ({world})"
+  homes_none: "&cVous n'avez aucun home défini."
+  
+  # InvSee
+  invsee_opened: "&aInventaire de &e{player} &aouvert."
+  
+  # Broadcast
+  broadcast_format: "&8[&c&lANNONCE&8]&r {message}"
+  
+  # Combat
+  combat_tagged: "&cVous êtes maintenant en combat ! Ne vous déconnectez pas pendant &e{duration} &csecondes."
+  combat_expired: "&aVous n'êtes plus en combat."
+  combat_logout: "&e{player} &cs'est déconnecté en combat et a été tué."
+  
+  # Xray
+  xray_alert: "&c&lXRAY &8» &e{player} &7a miné &c{count} &7blocs de &b{ore} &7en moins d'une minute !"
+  xray_alerts_enabled: "&aAlertes Xray activées."
+  xray_alerts_disabled: "&cAlertes Xray désactivées."
+  
+  # Auth
+  auth_join_register: "&eBienvenue ! Veuillez vous enregistrer avec &b/register <mdp> <mdp>"
+  auth_join_login: "&eBon retour ! Veuillez vous connecter avec &b/login <mdp>"
+  auth_required: "&cVous devez être connecté pour faire cela ! Utilisez /login ou /register."
+  auth_already_registered: "&cVous êtes déjà enregistré ! Utilisez /login."
+  auth_not_registered: "&cVous n'êtes pas enregistré ! Utilisez /register."
+  auth_already_logged: "&cVous êtes déjà connecté !"
+  auth_password_mismatch: "&cLes mots de passe ne correspondent pas."
+  auth_register_success: "&aEnregistrement réussi ! Vous êtes maintenant connecté."
+  auth_login_success: "&aConnexion réussie ! Bon jeu."
+  auth_login_failed: "&cMot de passe incorrect."
+  
+  # Death Dimension
+  death_dimension_death: "&c{player} est mort et a été envoyé dans le monde de la mort..."
+  death_dimension_enter: "&cVous êtes mort... Résolvez l'énigme pour revenir à la vie!"
+  death_dimension_exit: "&aFélicitations ! Vous avez résolu l'énigme et êtes revenu à la vie !"
+
+
+# Paramètres
+settings:
+  # Délai d'expiration des demandes TPA (en secondes)
+  tpa_timeout: 30
+  
+  # Nombre maximum de homes par joueur
+  max_homes: 3
+  
+  # ========== VANISH ==========
+  
+  # Appliquer l'effet d'invisibilité visuel (optionnel)
+  vanish_invisibility_effect: false
+  
+  # Empêcher les dégâts sur les joueurs vanish
+  vanish_no_damage: false
+  
+  # ========== SUPERVANISH ==========
+  
+  # Cacher les messages de join/quit
+  supervanish_hide_join_quit: true
+  
+  # Désactiver le pickup d'items
+  supervanish_disable_pickup: true
+  
+  # Désactiver les dégâts donnés
+  supervanish_disable_damage: true
+  
+  # Désactiver la casse de blocs
+  supervanish_disable_block_break: false
+  
+  # Désactiver la pose de blocs
+  supervanish_disable_block_place: false
+  
+  # Activer la vision nocturne
+  supervanish_night_vision: true
+  
+  # Empêcher la perte de faim
+  # Empêcher la perte de faim
+  supervanish_no_hunger: true
+
+# Configuration Chat
+chat:
+  proximity-radius: 100.0
+  shout-prefix: "!"
+
+# Configuration PVP
+pvp:
+  enabled: true
+
+# Configuration Xray (Blocs par minute avant alerte)
+xray:
+  ores:
+    DIAMOND_ORE: 5
+    DEEPSLATE_DIAMOND_ORE: 5
+    ANCIENT_DEBRIS: 3
+    GOLD_ORE: 10
+    DEEPSLATE_GOLD_ORE: 10
+    EMERALD_ORE: 5
+    DEEPSLATE_EMERALD_ORE: 5
+
+# Position du spawn (géré automatiquement)
+spawn:
+  world: world
+  x: 0.0
+  y: 64.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+  set: false
+
+# Configuration du monde de la mort
+death-dimension:
+  # Activer ou désactiver le système
+  enabled: true
+  
+  # Nom du monde
+  world-name: death_world
+  
+  # Conserver l'inventaire lors de la téléportation
+  keep-inventory: true
+  
+  # Position de spawn dans le monde de la mort
+  spawn:
+    x: 0.0
+    y: 100.0
+    z: 0.0
+
