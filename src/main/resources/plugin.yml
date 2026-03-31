@@ -2,7 +2,7 @@ name: ModerationSMP
 version: '${project.version}'
 main: fr.moderation.ModerationSMP
 api-version: '1.21'
-author: YourName
+author: Leoo955
 description: Plugin de modération complet avec système de mort et puzzles
 softdepend: [CoreProtect, WorldEdit]
 
